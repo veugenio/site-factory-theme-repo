@@ -4,4 +4,4 @@ js:
   vendor-bundle.js: {attributes: { type: 'text/javascript' }}
   ArticlesList-bundle.js: {attributes: { type: 'text/javascript' }}
 css:
-  //unpkg.com/tailwindcss@^2/dist/tailwind.min.cs: { type: external, minified: true, crossorigin: anonymous }
+  //unpkg.com/tailwindcss@^2/dist/tailwind.min.css: { type: external, minified: true, crossorigin: anonymous }
