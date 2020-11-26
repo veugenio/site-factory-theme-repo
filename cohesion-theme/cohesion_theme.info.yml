@@ -1,4 +1,4 @@
-name: Site Studio minimal from theme repository
+name: Site Studio theme repository
 type: theme
 description: A minimal theme as a basis for Site Studio powered websites. It includes some basic styling for Drupal admin functions.
 core_version_requirement: ^8.8.0 || ^9
