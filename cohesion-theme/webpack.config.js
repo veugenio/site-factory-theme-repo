@@ -10,18 +10,27 @@ const isProduction = (env === 'production');
 
 const plugins = [
   
-  new CleanWebpackPlugin(),
+  // new CleanWebpackPlugin(),
   new FriendlyErrorsWebpackPlugin({clearConsole: false}),
   new WebpackNotifierPlugin({alwaysNotify: true}),
+  // new FileManagerPlugin({
+  //   events: {
+  //     onEnd: {
+  //       move: [
+  //         { source: '/path/from', destination: '/path/to' },
+  //         { source: '/path/fromfile.txt', destination: '/path/tofile.txt' },
+  //       ],
+  //     },
+  //   },
+  //   runTasksInSeries: false,
+  // })
 ];
 
 // Configure source map for components file.
 
 const glob = require('glob');
 
-const entry = {
-  "app": './src/index'
-};
+const entry = {};
 
 glob
   .sync('./src/features/*')
@@ -29,20 +38,19 @@ glob
     return path.basename(file, path.extname(file));
   })
   .forEach(feature => {
-    entry[`./features/${feature}`] = [`./src/features/${feature}/index.js`];
+    entry[`${feature}/bundle`] = [`./src/features/${feature}/`];
   });
 
 const PATH_SRC = path.resolve(__dirname, 'src');
-const PATH_DIST = path.resolve(__dirname, 'dist')
+const PATH_DIST = path.resolve(__dirname, 'components')
 
 module.exports = {
   mode: env,
-  watch: !isProduction,
+  watch: false,
   entry: entry,
   output: {
-    filename: '[name]-bundle.js',
+    filename: '[name].js',
     path: PATH_DIST,
-    pathinfo: false
   },
   externals: {
     jquery: 'jQuery',
@@ -72,7 +80,7 @@ module.exports = {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
+          name: "./../dist/vendor",
           chunks: "initial",
         },
       },
