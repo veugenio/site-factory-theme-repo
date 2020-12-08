@@ -9,21 +9,9 @@ const env = process.env.NODE_ENV;
 const isProduction = (env === 'production');
 
 const plugins = [
-  
-  // new CleanWebpackPlugin(),
+  new CleanWebpackPlugin(),
   new FriendlyErrorsWebpackPlugin({clearConsole: false}),
   new WebpackNotifierPlugin({alwaysNotify: true}),
-  // new FileManagerPlugin({
-  //   events: {
-  //     onEnd: {
-  //       move: [
-  //         { source: '/path/from', destination: '/path/to' },
-  //         { source: '/path/fromfile.txt', destination: '/path/tofile.txt' },
-  //       ],
-  //     },
-  //   },
-  //   runTasksInSeries: false,
-  // })
 ];
 
 // Configure source map for components file.
